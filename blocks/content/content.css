@@ -1,0 +1,13 @@
+.content {
+  width: 80%;
+  max-width: 880px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 320px) {
+  .content {
+    width: 100%;
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}

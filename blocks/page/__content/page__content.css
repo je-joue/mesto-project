@@ -1,0 +1,20 @@
+.page__content {
+  width: 100vw;
+  max-width: 1280px;
+  margin:0 auto;
+  padding-top: 45px;
+  padding-bottom: 60px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 320px) {
+  .page__content {
+    padding-top: 28px;
+    padding-bottom: 36px;
+
+  }
+}
+
