@@ -13,7 +13,18 @@
 
 @media screen and (max-width: 1024px) {
   .elements {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   }
+}
 
+@media screen and (max-width: 768px) {
+  .elements {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .elements {
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  }
 }

@@ -2,6 +2,27 @@
   margin: 0;
   font-weight: 500;
   font-size: 42px;
-  line-height: 114%;
+  line-height: 48px;
   padding-bottom: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__name {
+    font-size: calc((100vw - 320px) / (1024 - 320) * (35 - 27) + 27px);
+    line-height: 122%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__name {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+    padding-bottom: 14px;
+  }
 }

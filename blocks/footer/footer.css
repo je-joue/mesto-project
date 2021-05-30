@@ -4,11 +4,16 @@
   box-sizing: border-box;
 }
 
+@media screen and (max-width: 768px) {
+  .footer {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .footer {
     width: 100%;
     padding-left: 19px;
     padding-right: 19px;
-
   }
 }

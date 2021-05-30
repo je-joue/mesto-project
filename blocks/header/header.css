@@ -2,8 +2,12 @@
   width: 80%;
   max-width: 880px;
   padding-bottom: 40px;
+}
 
-
+@media screen and (max-width: 768px) {
+  .header {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 320px) {

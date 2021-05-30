@@ -1,7 +1,31 @@
 .profile__add-button {
   display: block;
-  background-image: url(../../../images/Add-Button.png);
+  background-image: url(../../../images/Add-Button.svg);
   width: 150px;
   height: 50px;
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__add-button {
+    width: 12vw;
+    height: 4vw;
+    background-size: contain;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__add-button {
+    width: 150px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__add-button {
+    background-image: url(../../../images/Add-Button_large.svg);
+    width: 100%;
+    height: 50px;
+    background-position-x: center;
+  }
 }

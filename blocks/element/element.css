@@ -10,3 +10,15 @@
   border-radius: 3%;
   overflow: hidden;
 }
+
+@media screen and (max-width: 768px) {
+  .element {
+    width: calc((80vw - 1*17px)/2);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .element {
+    width: 282px;
+  }
+}

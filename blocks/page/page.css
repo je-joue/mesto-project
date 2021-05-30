@@ -11,3 +11,17 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
 }
+
+@media screen and (max-width: 600px) {
+  .page {
+    padding-top: calc((100vw - 320px) / (1024 - 320) * (40 - 28) + 28px);;
+    padding-bottom: calc((100vw - 320px) / (1024 - 320) * (55 - 36) + 36px);;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .page {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+}
