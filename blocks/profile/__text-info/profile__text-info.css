@@ -1,15 +1,28 @@
 .profile__text-info {
-  margin-right: 30px;
+  position: relative;
   margin-left: 30px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 80%;
+  flex-wrap: wrap;
 }
 
+.profile__text-info::before {
+  content: "";
+  display: block;
+  width: 100%;
+  order: 3;
+}
 
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .profile__text-info {
+    display: inline;
     margin: 0;
+    width: 100%;
+    max-width: 254px;
+    justify-content: center;
+  }
+
+  .profile__text-info::before {
+    max-width: 0;
   }
 }

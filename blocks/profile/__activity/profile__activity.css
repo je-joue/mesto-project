@@ -1,8 +1,13 @@
 .profile__activity {
+  order: 4;
   margin: 0;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
+  max-width: 80%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1024px) {
@@ -15,6 +20,7 @@
 @media screen and (max-width: 500px) {
   .profile__activity {
     text-align: center;
+    max-width: 100%;
   }
 }
 
@@ -22,6 +28,5 @@
   .profile__activity {
     font-size: 14px;
     line-height: 17px;
-    text-align: center;
   }
 }

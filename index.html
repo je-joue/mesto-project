@@ -10,20 +10,22 @@
 <body class="page">
 
   <div class="popup popup_open">
-    <form class="form">
-      <h2 class="form__title">Редактировать профиль</h2>
-      <fieldset class="form__items">
-        <input class="form__item" type="text" name="name" placeholder="Имя">
-        <input class="form__item" type="text" name="activity" placeholder="Род деятельности">
-      </fieldset>
-      <button class="form__submit-button page__button">Сохранить</button>
-      <button class="form__close-button page__button"></button>
-    </form>
+    <div class="popup__container">
+      <form class="form">
+        <h2 class="form__title">Редактировать профиль</h2>
+        <fieldset class="form__items">
+          <input class="form__item" type="text" name="name" placeholder="Имя">
+          <input class="form__item" type="text" name="activity" placeholder="Род деятельности">
+        </fieldset>
+        <button type="submit" class="form__submit-button page__button">Сохранить</button>
+        <button type="button" class="form__close-button page__button"></button>
+      </form>
+    </div>
+
   </div>
 
   <header class="header">
     <div class="header__logo"></div>
-    <hr class="header__line">
   </header>
 
   <main class="content">
@@ -31,55 +33,56 @@
       <div class="profile__profile-info">
         <img class="profile__avatar" src="./images/profile_pic.jpg" alt="Фото профиля">
         <div class="profile__text-info">
-          <h1 class="profile__name">Жак-Ив Кусто<button class="profile__edit-button page__button"></button></h1>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__activity">Исследователь океана</p>
+          <button type="button" class="profile__edit-button page__button"></button>
         </div>
       </div>
-      <div class="profile__add-button page__button"></div>
+      <button type="button" class="profile__add-button page__button"></button>
     </section>
 
     <section class="photo-content">
-      <ul class="elements">
+      <ul class="photo-content__elements">
         <li class="element">
           <img class="element__photo" src="./images/kamchatka.jpg" alt="Фото">
           <div class="element__info">
             <p class="element__text">Камчатка</p>
-            <button class="element__like page__button"></button>
+            <button type="button" class="element__like page__button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__photo" src="./images/krasnoyarsk-krai.jpg" alt="Фото">
           <div class="element__info">
             <p class="element__text">Красноярский край</p>
-            <button class="element__like page__button"></button>
+            <button type="button" class="element__like page__button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__photo" src="./images/sochi.jpg" alt="Фото">
           <div class="element__info">
             <p class="element__text">Сочи</p>
-            <button class="element__like page__button"></button>
+            <button type="button" class="element__like page__button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__photo" src="./images/moscow.jpg" alt="Фото">
           <div class="element__info">
             <p class="element__text">Москва</p>
-            <button class="element__like page__button"></button>
+            <button type="button" class="element__like page__button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__photo" src="./images/khrebet-itsyl.jpg" alt="Фото">
           <div class="element__info">
             <p class="element__text">Хребет Ицыл</p>
-            <button class="element__like page__button"></button>
+            <button type="button" class="element__like page__button"></button>
           </div>
         </li>
         <li class="element">
           <img class="element__photo" src="./images/olkhon-island.jpg" alt="Фото">
           <div class="element__info">
             <p class="element__text">Озеро Ольхон</p>
-            <button class="element__like page__button"></button>
+            <button type="button" class="element__like page__button"></button>
           </div>
         </li>
       </ul>

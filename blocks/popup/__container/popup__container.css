@@ -1,4 +1,4 @@
-.popup_open {
+.popup__container {
   display: flex;
   justify-content: center;
 }

@@ -1,8 +1,28 @@
 .profile__edit-button {
+  order: 2;
   background-image: url(../../../images/Edit-Button.svg);
   background-size: contain;
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
   margin-left: 18px;
+  margin-bottom: 2%;
+  align-self: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__edit-button {
+    width: calc((100vw - 320px) / (1024 - 320) * (24 - 18) + 18px);
+    height: calc((100vw - 320px) / (1024 - 320) * (24 - 18) + 18px);
+    margin-left: 10px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .profile__edit-button {
+    position: absolute;
+    right: -28px;
+    top: 8px;
+  }
 }
