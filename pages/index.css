@@ -1,6 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
 @import url(../blocks/page/page.css);
+@import url(../blocks/page/__button/page__button.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -27,3 +28,13 @@
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_open/popup_open.css);
+
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__close-button/form__close-button.css);
+@import url(../blocks/form/__ttitle/form__title.css);
+@import url(../blocks/form/__items/form__items.css);
+@import url(../blocks/form/__item/form__item.css);
+@import url(../blocks/form/__submit-button/form__submit-button.css);

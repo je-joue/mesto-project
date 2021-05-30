@@ -1,0 +1,11 @@
+.page__button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+}
+
+.page__button:hover {
+  opacity: .6;
+}

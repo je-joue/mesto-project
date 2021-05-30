@@ -4,3 +4,7 @@
   height: 19px;
   margin-left: 10px;
 }
+
+.element__like:hover {
+  opacity: .5;
+}
