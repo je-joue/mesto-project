@@ -31,9 +31,9 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/_open/popup_open.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
 
 @import url(../blocks/form/form.css);
-@import url(../blocks/form/__close-button/form__close-button.css);
 @import url(../blocks/form/__ttitle/form__title.css);
 @import url(../blocks/form/__items/form__items.css);
 @import url(../blocks/form/__item/form__item.css);

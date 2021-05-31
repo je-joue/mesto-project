@@ -8,5 +8,6 @@
   /* background-color: #000000;
   opacity: .5; */
   display: none;
+  justify-content: center;
   z-index: 1000;
 }
