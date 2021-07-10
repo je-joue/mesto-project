@@ -9,26 +9,12 @@
 
 <body class="page">
 
-  <div class="popup popup_open">
-    <div class="popup__container">
-      <button type="button" class="popup__close-button page__button"></button>
-      <form class="form" name="form">
-        <h2 class="form__title">Редактировать профиль</h2>
-        <fieldset class="form__items">
-          <input class="form__item" type="text" name="name" placeholder="Имя">
-          <input class="form__item" type="text" name="activity" placeholder="Род деятельности">
-        </fieldset>
-        <button type="submit" class="form__submit-button page__button">Сохранить</button>
-      </form>
-    </div>
-
-  </div>
-
   <header class="header">
     <div class="header__logo"></div>
   </header>
 
   <main class="content">
+
     <section class="profile">
       <div class="profile__profile-info">
         <img class="profile__avatar" src="./images/profile_pic.jpg" alt="Фото профиля">
@@ -42,47 +28,53 @@
     </section>
 
     <section class="photo-content">
-      <ul class="photo-content__elements">
-        <li class="element">
-          <img class="element__photo" src="./images/kamchatka.jpg" alt="Фото">
-          <div class="element__info">
-            <p class="element__text">Камчатка</p>
-            <button type="button" class="element__like page__button"></button>
+      <ul class="photo-content__cards">
+        <li class="card">
+          <button type="button" class="card__delete-button page__button"></button>
+          <img class="card__photo" src="./images/kamchatka.jpg" alt="Фото">
+          <div class="card__info">
+            <p class="card__text">Камчатка</p>
+            <button type="button" class="card__like page__button"></button>
           </div>
         </li>
-        <li class="element">
-          <img class="element__photo" src="./images/krasnoyarsk-krai.jpg" alt="Фото">
-          <div class="element__info">
-            <p class="element__text">Красноярский край</p>
-            <button type="button" class="element__like page__button"></button>
+        <li class="card">
+          <button type="button" class="card__delete-button page__button"></button>
+          <img class="card__photo" src="./images/krasnoyarsk-krai.jpg" alt="Фото">
+          <div class="card__info">
+            <p class="card__text">Красноярский край</p>
+            <button type="button" class="card__like page__button"></button>
           </div>
         </li>
-        <li class="element">
-          <img class="element__photo" src="./images/sochi.jpg" alt="Фото">
-          <div class="element__info">
-            <p class="element__text">Сочи</p>
-            <button type="button" class="element__like page__button"></button>
+        <li class="card">
+          <button type="button" class="card__delete-button page__button"></button>
+          <img class="card__photo" src="./images/sochi.jpg" alt="Фото">
+          <div class="card__info">
+            <p class="card__text">Сочи</p>
+            <button type="button" class="card__like page__button"></button>
           </div>
         </li>
-        <li class="element">
-          <img class="element__photo" src="./images/moscow.jpg" alt="Фото">
-          <div class="element__info">
-            <p class="element__text">Москва</p>
-            <button type="button" class="element__like page__button"></button>
+        <li class="card">
+          <button type="button" class="card__delete-button page__button"></button>
+          <img class="card__photo" src="./images/moscow.jpg" alt="Фото">
+          <div class="card__info">
+            <p class="card__text">Москва</p>
+            <button type="button" class="card__like page__button"></button>
           </div>
         </li>
-        <li class="element">
-          <img class="element__photo" src="./images/khrebet-itsyl.jpg" alt="Фото">
-          <div class="element__info">
-            <p class="element__text">Хребет Ицыл</p>
-            <button type="button" class="element__like page__button"></button>
+        <li class="card">
+          <button type="button" class="card__delete-button page__button"></button>
+          <img class="card__photo" src="./images/khrebet-itsyl.jpg" alt="Фото">
+          <div class="card__info">
+            <p class="card__text">Хребет Ицыл</p>
+            <button type="button" class="card__like page__button"></button>
           </div>
         </li>
-        <li class="element">
-          <img class="element__photo" src="./images/olkhon-island.jpg" alt="Фото">
-          <div class="element__info">
-            <p class="element__text">Озеро Ольхон</p>
-            <button type="button" class="element__like page__button"></button>
+        <li class="card">
+          <button type="button" class="card__delete-button page__button"></button>
+          <img class="card__photo" src="./images/olkhon-island.jpg" alt="Фото">
+          <div class="card__info">
+            <p class="card__text">Озеро Ольхон</p>
+            <button type="button" class="card__like page__button"></button>
           </div>
         </li>
       </ul>
@@ -91,8 +83,61 @@
   </main>
 
   <footer class="footer">
-    <p class="footer__copyright">© 2020 Mesto Russia</p>
+    <p class="footer__copyright">© 2021 Mesto Russia</p>
   </footer>
 
+  <!-- Popups -->
+
+  <div class="popup" id="profile-edit-popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button page__button" id="profile-edit-close"></button>
+      <form class="form" name="form" id="profile-edit-form">
+        <h2 class="form__title">Редактировать профиль</h2>
+        <fieldset class="form__items">
+          <input class="form__item" type="text" name="name" placeholder="Имя" id="edit-name">
+          <input class="form__item" type="text" name="activity" placeholder="Род деятельности" id="edit-activity">
+        </fieldset>
+        <button type="submit" class="form__submit-button page__button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup" id="add-card-popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button page__button" id="add-card-close"></button>
+      <form class="form" name="form" id="add-card-form">
+        <h2 class="form__title">Новое место</h2>
+        <fieldset class="form__items">
+          <input class="form__item" type="text" name="name" placeholder="Название" id="card-name">
+          <input class="form__item" type="text" name="activity" placeholder="Ссылка на картинку" id="card-link">
+        </fieldset>
+        <button type="submit" class="form__submit-button page__button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup" id="image-popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button page__button" id="image-popup-close"></button>
+      <figure class="popup__card">
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__image-caption"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+<!-- Templates -->
+<template id="card-template">
+  <li class="card">
+    <img class="card__photo" src="" alt="Фото">
+    <button type="button" class="card__delete-button page__button"></button>
+    <div class="card__info">
+      <p class="card__text"></p>
+      <button type="button" class="card__like page__button"></button>
+    </div>
+  </li>
+</template>
+
+<script src="./js/script.js"></script>
 </body>
 </html>

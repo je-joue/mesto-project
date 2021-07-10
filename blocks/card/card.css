@@ -1,7 +1,7 @@
-.element {
+.card {
   background-color: #ffffff;
-  width: calc((80vw - 2*17px)/3);
-  max-width: 282px;
+  /* width: calc((80vw - 2*17px)/3); */
+  width: 282px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -9,16 +9,17 @@
   justify-content: space-between;
   border-radius: 3%;
   overflow: hidden;
+  position: relative;
 }
 
-@media screen and (max-width: 768px) {
-  .element {
+/* @media screen and (max-width: 768px) {
+  .card {
     width: calc((80vw - 1*17px)/2);
   }
 }
 
 @media screen and (max-width: 560px) {
-  .element {
+  .card {
     width: 282px;
   }
-}
+} */
