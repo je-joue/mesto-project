@@ -28,56 +28,7 @@
     </section>
 
     <section class="photo-content">
-      <ul class="photo-content__cards">
-        <li class="card">
-          <button type="button" class="card__delete-button page__button"></button>
-          <img class="card__photo" src="./images/kamchatka.jpg" alt="Фото">
-          <div class="card__info">
-            <p class="card__text">Камчатка</p>
-            <button type="button" class="card__like page__button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" class="card__delete-button page__button"></button>
-          <img class="card__photo" src="./images/krasnoyarsk-krai.jpg" alt="Фото">
-          <div class="card__info">
-            <p class="card__text">Красноярский край</p>
-            <button type="button" class="card__like page__button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" class="card__delete-button page__button"></button>
-          <img class="card__photo" src="./images/sochi.jpg" alt="Фото">
-          <div class="card__info">
-            <p class="card__text">Сочи</p>
-            <button type="button" class="card__like page__button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" class="card__delete-button page__button"></button>
-          <img class="card__photo" src="./images/moscow.jpg" alt="Фото">
-          <div class="card__info">
-            <p class="card__text">Москва</p>
-            <button type="button" class="card__like page__button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" class="card__delete-button page__button"></button>
-          <img class="card__photo" src="./images/khrebet-itsyl.jpg" alt="Фото">
-          <div class="card__info">
-            <p class="card__text">Хребет Ицыл</p>
-            <button type="button" class="card__like page__button"></button>
-          </div>
-        </li>
-        <li class="card">
-          <button type="button" class="card__delete-button page__button"></button>
-          <img class="card__photo" src="./images/olkhon-island.jpg" alt="Фото">
-          <div class="card__info">
-            <p class="card__text">Озеро Ольхон</p>
-            <button type="button" class="card__like page__button"></button>
-          </div>
-        </li>
-      </ul>
+      <ul class="photo-content__cards"></ul>
     </section>
 
   </main>
@@ -108,19 +59,19 @@
       <form class="form" name="form" id="add-card-form">
         <h2 class="form__title">Новое место</h2>
         <fieldset class="form__items">
-          <input class="form__item" type="text" name="name" placeholder="Название" id="card-name">
-          <input class="form__item" type="text" name="activity" placeholder="Ссылка на картинку" id="card-link">
+          <input class="form__item form__item_place_add-card" type="text" name="name" placeholder="Название" id="card-name">
+          <input class="form__item form__item_place_add-card" type="text" name="activity" placeholder="Ссылка на картинку" id="card-link">
         </fieldset>
         <button type="submit" class="form__submit-button page__button">Сохранить</button>
       </form>
     </div>
   </div>
 
-  <div class="popup" id="image-popup">
+  <div class="popup popup_image-popup" id="image-popup">
     <div class="popup__container">
       <button type="button" class="popup__close-button page__button" id="image-popup-close"></button>
       <figure class="popup__card">
-        <img class="popup__image" src="" alt="">
+        <img class="popup__image" src="" alt="Фото">
         <figcaption class="popup__image-caption"></figcaption>
       </figure>
     </div>

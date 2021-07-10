@@ -37,9 +37,11 @@
 @import url(../blocks/popup/__card/popup__card.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__image-caption/popup__image-caption.css);
+@import url(../blocks/popup/_image-popup/popup_image-popup.css);
 
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__ttitle/form__title.css);
 @import url(../blocks/form/__items/form__items.css);
 @import url(../blocks/form/__item/form__item.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);
+@import url(../blocks/form/__item/_place_add-card/form__item_place_add-card.css);
