@@ -101,6 +101,7 @@ function addCard(item) {
 
   newCard.querySelector('.card__text').textContent = item.text;
   newCard.querySelector('.card__photo').src = item.link;
+  newCard.querySelector('.card__photo').alt = item.text;
 
   newCard.querySelector('.card__delete-button').addEventListener('click', function() {
     newCard.querySelector('.card__delete-button').closest('.card').remove();
@@ -110,11 +111,12 @@ function addCard(item) {
     newCard.querySelector('.card__like').classList.toggle('card__like_active');
   });
 
-  newCard.querySelector('.card__photo').addEventListener('click', function(item) {
+  newCard.querySelector('.card__photo').addEventListener('click', function() {
     const popupImage = imagePopup.querySelector('.popup__image');
     const popupImageCaption = imagePopup.querySelector('.popup__image-caption');
-    popupImage.src = newCard.querySelector('.card__photo').getAttribute('src');
-    popupImageCaption.textContent = newCard.querySelector('.card__text').textContent;
+    popupImage.src = item.link;
+    popupImage.alt = item.text;
+    popupImageCaption.textContent = item.text;
     popupOpen(imagePopup);
   });
 

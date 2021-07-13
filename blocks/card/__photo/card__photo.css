@@ -1,4 +1,7 @@
 .card__photo {
   height: 282px;
   object-fit: cover;
+  color: black;
+  text-align: center;
+  line-height: 282px;
 }

@@ -59,8 +59,8 @@
       <form class="form" name="form" id="add-card-form">
         <h2 class="form__title">Новое место</h2>
         <fieldset class="form__items">
-          <input class="form__item form__item_place_add-card" type="text" name="name" placeholder="Название" id="card-name">
-          <input class="form__item form__item_place_add-card" type="text" name="activity" placeholder="Ссылка на картинку" id="card-link">
+          <input class="form__item form__item_place_add-card" type="text" name="card-name" placeholder="Название" id="card-name">
+          <input class="form__item form__item_place_add-card" type="url" name="card-link" placeholder="Ссылка на картинку" id="card-link">
         </fieldset>
         <button type="submit" class="form__submit-button page__button">Сохранить</button>
       </form>
@@ -80,7 +80,7 @@
 <!-- Templates -->
 <template id="card-template">
   <li class="card">
-    <img class="card__photo" src="" alt="Фото">
+    <img class="card__photo" src="" alt="">
     <button type="button" class="card__delete-button page__button"></button>
     <div class="card__info">
       <p class="card__text"></p>
