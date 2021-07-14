@@ -29,6 +29,7 @@ const initialCards = [
 const profileEditPopup = document.querySelector('#profile-edit-popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditCloseButton = document.querySelector('#profile-edit-close');
+const profileEditForm = document.querySelector('#profile-edit-form');
 const addCardPopup = document.querySelector('#add-card-popup');
 const cardAddButton = document.querySelector('.profile__add-button');
 const addCardCloseButton = document.querySelector('#add-card-close');
@@ -63,12 +64,11 @@ profileEditButton.addEventListener('click', function() {
 });
 
 // закрытие окна редактирования профиля (c сохранением введенных данных)
-profileEditSubmitButton.addEventListener('click', function(event) {
+profileEditForm.addEventListener('submit', function(event) {
   event.preventDefault();
   profileName.textContent = editName.value;
   profileActivity.textContent = editActivity.value;
   popupClose(profileEditPopup);
-
 });
 
 // закрытие окна редактирования профиля (без сохранения)
@@ -124,7 +124,7 @@ function addCard(item) {
 }
 
 // Добавление новой карточки
-addCardSubmitButton.addEventListener('click', function(event) {
+addCardForm.addEventListener('submit', function(event) {
   event.preventDefault();
   const card = {
     text: cardName.value,
