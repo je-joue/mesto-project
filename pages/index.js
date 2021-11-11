@@ -65,7 +65,7 @@ profileEditButton.addEventListener('click', function() {
 
 // закрытие окна редактирования профиля (c сохранением введенных данных)
 profileEditForm.addEventListener('submit', function(event) {
-  event.preventDefault();
+  // event.preventDefault();
   profileName.textContent = editName.value;
   profileActivity.textContent = editActivity.value;
   popupClose(profileEditPopup);
@@ -125,7 +125,7 @@ function addCard(item) {
 
 // Добавление новой карточки
 addCardForm.addEventListener('submit', function(event) {
-  event.preventDefault();
+  // event.preventDefault();
   const card = {
     text: cardName.value,
     link: cardLink.value
@@ -139,3 +139,7 @@ addCardForm.addEventListener('submit', function(event) {
 initialCards.forEach (function(item) {
   photoContent.append(addCard(item));
 });
+
+import { enableValidation } from '../components/validate.js';
+
+enableValidation();
