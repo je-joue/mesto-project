@@ -1,6 +1,6 @@
 # Проект: Место
 
-[Проект на GitHub Pages] (https://je-joue.github.io/mesto-project/)
+[Проект на GitHub Pages](https://je-joue.github.io/mesto-project/)
 
 ## Применяемые технологии
 * HTML5 и CSS
