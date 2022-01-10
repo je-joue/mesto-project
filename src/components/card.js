@@ -26,7 +26,7 @@ export function addCard(item) {
     evt.target.classList.toggle('card__like_active');
   });
 
-  newCard.querySelector('.card__photo').addEventListener('click', function() {
+  cardImage.addEventListener('click', function() {
     imagePopupImg.src = item.link;
     imagePopupImg.alt = item.text;
     imagePopupCaption.textContent = item.text;
