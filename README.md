@@ -1,6 +1,10 @@
 # Проект: Место
 
-Яндекс Практикум. Спринт 2. Адаптивная верстка.
+[Проект на GitHub Pages](https://je-joue.github.io/mesto-project/)
 
-GitHub Pages
-https://je-joue.github.io/mesto/index.html
+## Применяемые технологии
+* HTML5 и CSS
+* JavaScript
+* Адаптивная верстка
+* БЭМ
+* Webpack
