@@ -1,19 +1,19 @@
 // открытие pop-up
-export function popupOpen(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_open');
-  document.addEventListener('keydown', popupCloseByEscape);
+  document.addEventListener('keydown', closeByEscape);
 }
 
 // закрытие pop-up
-export function popupClose(popup) {
+export function closePopup(popup) {
   popup.classList.remove('popup_open');
-  document.removeEventListener('keydown', popupCloseByEscape);
+  document.removeEventListener('keydown', closeByEscape);
 }
 
 // закрытие по нажатию на Esc
-export function popupCloseByEscape(event) {
+export function closeByEscape(event) {
   if (event.key === "Escape") {
     const openedPopup = document.querySelector('.popup_open');
-    popupClose(openedPopup);
+    closePopup(openedPopup);
   }
 }

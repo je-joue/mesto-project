@@ -1,35 +1,36 @@
 import {
-  popupOpen,
-  popupClose,
-  popupCloseByEscape
+  openPopup,
+  closePopup,
+  closeByEscape
 } from '../components/modal.js';
 
 const imagePopup = document.querySelector('#image-popup');
+const imagePopupImg = imagePopup.querySelector('.popup__image');
+const imagePopupCaption = imagePopup.querySelector('.popup__image-caption');
 
 // Создание новой карточки
 export function addCard(item) {
   const cardTemplate = document.querySelector('#card-template').content;
   const newCard = cardTemplate.querySelector('.card').cloneNode(true);
+  const cardImage = newCard.querySelector('.card__photo');
 
   newCard.querySelector('.card__text').textContent = item.text;
-  newCard.querySelector('.card__photo').src = item.link;
-  newCard.querySelector('.card__photo').alt = item.text;
+  cardImage.src = item.link;
+  cardImage.alt = item.text;
 
   newCard.querySelector('.card__delete-button').addEventListener('click', function() {
-    newCard.querySelector('.card__delete-button').closest('.card').remove();
+    newCard.remove();
   });
 
-  newCard.querySelector('.card__like').addEventListener('click', function() {
-    newCard.querySelector('.card__like').classList.toggle('card__like_active');
+  newCard.querySelector('.card__like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('card__like_active');
   });
 
   newCard.querySelector('.card__photo').addEventListener('click', function() {
-    const popupImage = imagePopup.querySelector('.popup__image');
-    const popupImageCaption = imagePopup.querySelector('.popup__image-caption');
-    popupImage.src = item.link;
-    popupImage.alt = item.text;
-    popupImageCaption.textContent = item.text;
-    popupOpen(imagePopup);
+    imagePopupImg.src = item.link;
+    imagePopupImg.alt = item.text;
+    imagePopupCaption.textContent = item.text;
+    openPopup(imagePopup);
   });
 
   return newCard;
