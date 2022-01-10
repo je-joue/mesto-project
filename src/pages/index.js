@@ -6,9 +6,9 @@ import {
 } from '../components/constants.js';
 
 import {
-  popupOpen,
-  popupClose
-  // popupCloseByEscape
+  openPopup,
+  closePopup
+  // closeByEscape
 } from '../components/modal.js';
 
 import { addCard } from '../components/card.js';
@@ -31,21 +31,21 @@ const popups = document.querySelectorAll('.popup');
 
 // открытие окна редактирования профиля
 profileEditButton.addEventListener('click', function() {
-  popupOpen(profileEditPopup);
+  openPopup(profileEditPopup);
   editName.value = profileName.textContent;
   editActivity.value = profileActivity.textContent;
 });
 
 // открытие окна "Добавить карточку"
 cardAddButton.addEventListener('click', function() {
-  popupOpen(addCardPopup);
+  openPopup(addCardPopup);
 });
 
 // закрытие окна редактирования профиля (c сохранением введенных данных)
 profileEditForm.addEventListener('submit', function(event) {
   profileName.textContent = editName.value;
   profileActivity.textContent = editActivity.value;
-  popupClose(profileEditPopup);
+  closePopup(profileEditPopup);
 });
 
 // закрытие pop-up
@@ -54,7 +54,7 @@ popups.forEach(popup => {
     const isCloseButtonClicked = event.target.classList.contains('popup__close-button');
     const isOverlayClicked = event.target.classList.contains('popup_open');
     if (isCloseButtonClicked || isOverlayClicked) {
-      popupClose(popup);
+      closePopup(popup);
     }
   });
 });
@@ -66,13 +66,15 @@ initialCards.forEach (function(item) {
 
 // Добавление новой карточки
 addCardForm.addEventListener('submit', function(event) {
+  const submitButton = addCardForm.querySelector(configValidate.submitButtonSelector);
   const card = {
     text: cardName.value,
     link: cardLink.value
   }
   photoContent.prepend(addCard(card));
-  popupClose(addCardPopup);
+  closePopup(addCardPopup);
   addCardForm.reset();
+  submitButton.disabled = true;
 });
 
 enableValidation(configValidate);
