@@ -2,17 +2,23 @@ import './index.css';
 
 import {
   configValidate,
-  initialCards
+  configApi
 } from '../components/constants.js';
 
 import {
   openPopup,
   closePopup
-  // closeByEscape
 } from '../components/modal.js';
 
 import { addCard } from '../components/card.js';
 import { enableValidation } from '../components/validate.js';
+import {
+  getUserData,
+  getCards,
+  patchProfileData,
+  patchAvatar,
+  postNewCard
+} from '../components/api.js';
 
 const profileEditPopup = document.querySelector('#profile-edit-popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -28,6 +34,13 @@ const photoContent = document.querySelector('.photo-content__cards');
 const cardName = document.querySelector('#card-name');
 const cardLink = document.querySelector('#card-link');
 const popups = document.querySelectorAll('.popup');
+const avatarEditButton = document.querySelector('.profile__avatar-edit-button');
+const avatarEditPopup = document.querySelector('#avatar-edit-popup');
+const avatarEditForm = document.querySelector('#avatar-edit-form');
+const avatarLink = document.querySelector('#avatar-link');
+const avatar = document.querySelector('.profile__avatar');
+
+export let userId;
 
 // открытие окна редактирования профиля
 profileEditButton.addEventListener('click', function() {
@@ -41,11 +54,9 @@ cardAddButton.addEventListener('click', function() {
   openPopup(addCardPopup);
 });
 
-// закрытие окна редактирования профиля (c сохранением введенных данных)
-profileEditForm.addEventListener('submit', function(event) {
-  profileName.textContent = editName.value;
-  profileActivity.textContent = editActivity.value;
-  closePopup(profileEditPopup);
+// открытие окна "Обновить аватар"
+avatarEditButton.addEventListener('click', function() {
+  openPopup(avatarEditPopup);
 });
 
 // закрытие pop-up
@@ -59,22 +70,74 @@ popups.forEach(popup => {
   });
 });
 
-// 6 карточек "из коробки"
-initialCards.forEach (function(item) {
-  photoContent.append(addCard(item));
+// закрытие окна редактирования профиля (c сохранением введенных данных)
+profileEditForm.addEventListener('submit', function(event) {
+  event.submitter.textContent = 'Сохранение...'
+  event.submitter.disabled = true;
+  patchProfileData(editName.value, editActivity.value)
+    .then((res) => {
+      profileName.textContent = res.name;
+      profileActivity.textContent = res.about;
+      closePopup(profileEditPopup);
+      event.submitter.textContent = 'Сохранить';
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+});
+
+// Обновление аватара
+avatarEditForm.addEventListener('submit', function(event) {
+  event.submitter.textContent = 'Сохранение...';
+  event.submitter.disabled =  true;
+  patchAvatar(avatarLink.value)
+    .then((res) => {
+      avatar.src = res.avatar;
+      closePopup(avatarEditPopup);
+      avatarEditForm.reset();
+      event.submitter.textContent = 'Сохранить';
+      event.submitter.disabled = true;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 });
 
 // Добавление новой карточки
 addCardForm.addEventListener('submit', function(event) {
-  const submitButton = addCardForm.querySelector(configValidate.submitButtonSelector);
-  const card = {
-    text: cardName.value,
-    link: cardLink.value
-  }
-  photoContent.prepend(addCard(card));
-  closePopup(addCardPopup);
-  addCardForm.reset();
-  submitButton.disabled = true;
+  event.submitter.textContent = 'Сохранение...';
+  event.submitter.disabled = true;
+  postNewCard(cardName.value, cardLink.value)
+    .then((res) => {
+      console.log(res);
+      photoContent.prepend(addCard(res));
+      closePopup(addCardPopup);
+      addCardForm.reset();
+      event.submitter.textContent = 'Сохранить';
+      event.submitter.disabled = true;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 });
 
+
+
+// Валидация
 enableValidation(configValidate);
+
+// Загрузка информации о пользователе и карточек с сервера
+Promise.all([getUserData(), getCards()])
+  .then(([userData, cards]) => {
+    console.log(userData);
+    console.log(cards);
+    userId = userData._id;
+    profileName.textContent = userData.name;
+    profileActivity.textContent = userData.about;
+    avatar.src = userData.avatar;
+    cards.forEach (function(card) {
+      photoContent.append(addCard(card));
+    });
+  })
+  .catch(err => console.log(err))
+

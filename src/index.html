@@ -16,10 +16,13 @@
 
     <section class="profile">
       <div class="profile__profile-info">
-        <img class="profile__avatar" src="<%=require('./images/profile_pic.jpg')%>" alt="Фото профиля">
+        <div class="profile__avatar-container">
+          <img class="profile__avatar" src="#" alt="Фото профиля">
+          <button type="button" class="profile__avatar-edit-button page__button"></button>
+        </div>
         <div class="profile__text-info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__activity">Исследователь океана</p>
+          <h1 class="profile__name"></h1>
+          <p class="profile__activity"></p>
           <button type="button" class="profile__edit-button page__button"></button>
         </div>
       </div>
@@ -54,15 +57,29 @@
     </div>
   </div>
 
+  <div class="popup" id="avatar-edit-popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button page__button" id="avatar-edit-close"></button>
+      <form class="form" name="form" id="avatar-edit-form" novalidate>
+        <h2 class="form__title">Обновить аватар</h2>
+        <fieldset class="form__items">
+          <input class="form__item form__item_type_link" type="url" name="avatar-link" placeholder="Ссылка на картинку" id="avatar-link" required>
+          <span class="form__item-error" id="avatar-link-error"></span>
+        </fieldset>
+        <button type="submit" class="form__submit-button page__button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
   <div class="popup" id="add-card-popup">
     <div class="popup__container">
       <button type="button" class="popup__close-button page__button" id="add-card-close"></button>
       <form class="form" name="form" id="add-card-form" novalidate>
         <h2 class="form__title">Новое место</h2>
         <fieldset class="form__items">
-          <input class="form__item form__item_place_add-card" type="text" name="card-name" minlength="2" maxlength="30" placeholder="Название" id="card-name" required>
+          <input class="form__item form__item_type_link" type="text" name="card-name" minlength="2" maxlength="30" placeholder="Название" id="card-name" required>
           <span class="form__item-error" id="card-name-error"></span>
-          <input class="form__item form__item_place_add-card" type="url" name="card-link" placeholder="Ссылка на картинку" id="card-link" required>
+          <input class="form__item form__item_type_link" type="url" name="card-link" placeholder="Ссылка на картинку" id="card-link" required>
           <span class="form__item-error" id="card-link-error"></span>
         </fieldset>
         <button type="submit" class="form__submit-button page__button">Сохранить</button>
@@ -74,7 +91,7 @@
     <div class="popup__container">
       <button type="button" class="popup__close-button page__button" id="image-popup-close"></button>
       <figure class="popup__card">
-        <img class="popup__image" src="" alt="Фото">
+        <img class="popup__image" src="#" alt="Фото">
         <figcaption class="popup__image-caption"></figcaption>
       </figure>
     </div>
@@ -87,7 +104,10 @@
     <button type="button" class="card__delete-button page__button"></button>
     <div class="card__info">
       <p class="card__text"></p>
-      <button type="button" class="card__like page__button"></button>
+      <div class="card__like-container">
+        <button type="button" class="card__like-button page__button"></button>
+        <p class="card__like-counter"></p>
+      </div>
     </div>
   </li>
 </template>
