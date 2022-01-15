@@ -79,10 +79,13 @@ profileEditForm.addEventListener('submit', function(event) {
       profileName.textContent = res.name;
       profileActivity.textContent = res.about;
       closePopup(profileEditPopup);
-      event.submitter.textContent = 'Сохранить';
     })
     .catch((err) => {
       console.log(err);
+      event.submitter.disabled = false;
+    })
+    .finally(() => {
+      event.submitter.textContent = 'Сохранить';
     })
 });
 
@@ -95,11 +98,14 @@ avatarEditForm.addEventListener('submit', function(event) {
       avatar.src = res.avatar;
       closePopup(avatarEditPopup);
       avatarEditForm.reset();
-      event.submitter.textContent = 'Сохранить';
       event.submitter.disabled = true;
     })
     .catch((err) => {
       console.log(err);
+      event.submitter.disabled = false;
+    })
+    .finally(() => {
+      event.submitter.textContent = 'Сохранить';
     })
 });
 
@@ -113,11 +119,14 @@ addCardForm.addEventListener('submit', function(event) {
       photoContent.prepend(addCard(res));
       closePopup(addCardPopup);
       addCardForm.reset();
-      event.submitter.textContent = 'Сохранить';
       event.submitter.disabled = true;
     })
     .catch((err) => {
       console.log(err);
+      event.submitter.disabled = false;
+    })
+    .finally(() => {
+      event.submitter.textContent = 'Сохранить';
     })
 });
 
