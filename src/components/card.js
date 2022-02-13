@@ -30,6 +30,7 @@
 //   cardLikeCounterSelector: '.card__like-counter',
 //   cardDeleteBtnSelector: '.card__delete-button',
 //   cardLikeBtnSelector: '.card__like-button',
+//   cardLikeBtnActiveClass: 'card__like-button_active'
 // }
 
 // Создание новой карточки
@@ -48,6 +49,7 @@ export default class Card {
     this._cardLikeCounterSelector = configCard.cardLikeCounterSelector;
     this._cardDeleteBtnSelector = configCard.cardDeleteBtnSelector;
     this._cardLikeBtnSelector = configCard.cardLikeBtnSelector;
+    this._cardLikeBtnActiveClass = configCard.cardLikeBtnActiveClass;
     this._handleDeleteBtnClick = handlers.handleDeleteBtnClick;
     this._handleImageClick = handlers.handleImageClick;
     this._handleUnlike = handlers.handleUnlike;
@@ -63,7 +65,7 @@ export default class Card {
     this._cardImage.src = this._cardImageLink;
     this._cardImage.alt = this._cardName;
     this._setEventListeners();
-    this._setCurrentLikeStatus();
+    this.setCurrentLikeStatus(this._likes);
     this._removeDeleteBtn();
 
     return this._element;
@@ -102,23 +104,24 @@ export default class Card {
     }
   }
 
-  _hasMyLike() {
-    return this._likes.some((like) => {
-      return like._id == this._userID;
+  _hasMyLike(res) {
+    return res.some((like) => {
+      return like._id === this._userID;
     })
   }
 
-  _setCurrentLikeStatus() {
-    if (this._hasMyLike()) {
-      this._likeBtn.classList.add();
+  setCurrentLikeStatus(res) {
+    if (this._hasMyLike(res)) {
+      this._likeBtn.classList.add(this._cardLikeBtnActiveClass);
     } else {
-      this._likeBtn.classList.remove();
+      this._likeBtn.classList.remove(this._cardLikeBtnActiveClass);
     }
-    this._element.querySelector(this._cardLikeCounterSelector).textContent = this._likes.length;
+    this._element.querySelector(this._cardLikeCounterSelector).textContent = res.length;
+    this._likes = res;
   }
 
   _toggleLike() {
-    if (this._hasMyLike()) {
+    if (this._hasMyLike(this._likes)) {
       this._handleUnlike(this._cardID);
     } else {
       this._handleLike(this._cardID);

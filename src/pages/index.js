@@ -185,16 +185,51 @@ const createCard = (cardData) => {
       handleImageClick: () => {
 
       },
-      handleUnlike: () => {
-
+      handleUnlike: (cardID) => {
+        api.deleteLike(cardID)
+          .then((res) => card.setCurrentLikeStatus(res.likes))
+          .catch((err) => console.log(err))
       },
-      handleLike: () => {
-
+      handleLike: (cardID) => {
+        api.putLike(cardID)
+          .then((res) => card.setCurrentLikeStatus(res.likes))
+          .catch((err) => console.log(err))
       }
     }
   );
   return card;
 }
+
+
+// _toggleLike() {
+//   if (this._hasMyLike()) {
+//     this._handleUnlike(this._cardID);
+//   } else {
+//     this._handleLike(this._cardID);
+//   }
+// }
+//   likeBtn.addEventListener('click', function(event) {
+//     if (hasMyLike(item)) {
+//       deleteLike(item._id)
+//         .then((res) => {
+//           item = res;
+//           event.target.classList.remove('card__like-button_active');
+//           likeCounter.textContent = item.likes.length;
+//         })
+//         .catch((err) => {
+//           console.log(err)
+//         })
+//     } else {
+//       putLike(item._id)
+//         .then((res) => {
+//           item = res;
+//           event.target.classList.add('card__like-button_active');
+//           likeCounter.textContent = item.likes.length;
+//         })
+//         .catch((err) => {
+//           console.log(err)
+//         })
+//     }
 
 
 // Загрузка информации о пользователе и карточек с сервера

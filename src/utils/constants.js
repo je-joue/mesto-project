@@ -27,6 +27,7 @@ export const configCard = {
   cardLikeCounterSelector: '.card__like-counter',
   cardDeleteBtnSelector: '.card__delete-button',
   cardLikeBtnSelector: '.card__like-button',
+  cardLikeBtnActiveClass: 'card__like-button_active'
 }
 
 
