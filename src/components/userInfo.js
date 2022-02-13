@@ -5,25 +5,20 @@ export default class UserInfo {
     this._userAvatar = document.querySelector(userAvatarSelector);
   }
 
-  // getUserInfo() {
-  //   return {
-  //     'name': this._userName.textContent,
-  //     'activity': this._userAbout.textContent
-  //   };
-  // }
-
-  // getUserID(userData) {
-  //   return this.userID = userData._id;
-  // }
+  getUserInfo(getUserData, { setInputValues }) {
+    getUserData()
+      .then(res => {
+        setInputValues(res)
+      })
+      .catch((err) => console.log(err))
+  }
 
   setUserInfo(userData) {
     this._userName.textContent = userData.name;
     this._userAbout.textContent = userData.about;
-    this._userAvatar.src = userData.avatar;
-    // this._id = userData._id;
   }
 
-  // setAvatar(avatar) {
-  //   this._userAvatar.src = avatar;
-  // }
+  setAvatar(userData) {
+    this._userAvatar.src = userData.avatar;
+  }
 }
