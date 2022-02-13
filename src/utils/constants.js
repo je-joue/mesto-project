@@ -1,3 +1,12 @@
+export const avatarEditForm = document.querySelector('#avatar-edit-form');
+export const avatarEditButton = document.querySelector('.profile__avatar-edit-button');
+export const addCardForm = document.querySelector('#add-card-form');
+export const cardAddButton = document.querySelector('.profile__add-button');
+export const profileEditButton = document.querySelector('.profile__edit-button');
+export const profileEditForm = document.querySelector('#profile-edit-form');
+export const editName = document.querySelector('#edit-name');
+export const editActivity = document.querySelector('#edit-activity');
+
 export const configApi = {
   baseURL: 'https://nomoreparties.co/v1/plus-cohort-5',
   headers: {
@@ -13,6 +22,40 @@ export const configValidate = {
   inputErrorClass: 'form__item_error',
 }
 
+export const userSelectors = {
+  userNameSelector: '.profile__name',
+  userActivitySelector: '.profile__activity',
+  userAvatarSelector: '.profile__avatar'
+}
+
+export const configCard = {
+  cardTemplateSelector: '#card-template',
+  cardElementSelector: '.card',
+  cardImageSelector: '.card__photo',
+  cardTextSelector: '.card__text',
+  cardLikeCounterSelector: '.card__like-counter',
+  cardDeleteBtnSelector: '.card__delete-button',
+  cardLikeBtnSelector: '.card__like-button',
+  cardLikeBtnActiveClass: 'card__like-button_active'
+}
+
+export const popupSelectors = {
+  editProfilePopup: '#profile-edit-popup',
+  addCardPopup: '#add-card-popup',
+  editAvatarPopup: '#avatar-edit-popup',
+  imagePopup: '.popup_image-popup'
+}
+
+export const formSelectors = {
+  formSelector: '.form',
+  inputSelector: '.form__item',
+  submitBtnSelector: '.form__submit-button'
+}
+
+export const imagePopupSelectors = {
+  imageSelector: '.popup__image',
+  captionSelector: '.popup__image-caption'
+}
 
 
 // //Карточки по умолчанию
