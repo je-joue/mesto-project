@@ -13,6 +13,22 @@ export const configValidate = {
   inputErrorClass: 'form__item_error',
 }
 
+export const userSelectors = {
+  userNameSelector: '.profile__name',
+  userActivitySelector: '.profile__activity',
+  userAvatarSelector: '.profile__avatar'
+}
+
+export const configCard = {
+  cardTemplateSelector: '#card-template',
+  cardElementSelector: '.card',
+  cardImageSelector: '.card__photo',
+  cardTextSelector: '.card__text',
+  cardLikeCounterSelector: '.card__like-counter',
+  cardDeleteBtnSelector: '.card__delete-button',
+  cardLikeBtnSelector: '.card__like-button',
+}
+
 
 
 // //Карточки по умолчанию

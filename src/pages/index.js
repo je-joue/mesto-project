@@ -1,46 +1,63 @@
 import './index.css';
 
+import Api from '../components/api.js';
+import UserInfo from '../components/userinfo';
+import FormValidator from '../components/formValidator.js';
+import Section from '../components/section.js';
+import Card from '../components/card.js';
+
+
 import {
   configValidate,
-  configApi
-} from '../components/constants.js';
+  configApi,
+  userSelectors,
+  configCard
+} from '../utils/constants.js';
 
 import {
   openPopup,
   closePopup
 } from '../components/modal.js';
 
-import { addCard } from '../components/card.js';
-import { enableValidation } from '../components/validate.js';
-import {
-  getUserData,
-  getCards,
-  patchProfileData,
-  patchAvatar,
-  postNewCard
-} from '../components/api.js';
+// import Card, { addCard } from '../components/card.js';
+// import { enableValidation } from '../components/formValidator.js';
 
-const profileEditPopup = document.querySelector('#profile-edit-popup');
-const profileEditButton = document.querySelector('.profile__edit-button');
+// import {
+//   getUserData,
+//   getCards,
+//   patchProfileData,
+//   patchAvatar,
+//   postNewCard
+// } from '../components/api.js';
+
+  const profileEditPopup = document.querySelector('#profile-edit-popup');
+  const profileEditButton = document.querySelector('.profile__edit-button');
 const profileEditForm = document.querySelector('#profile-edit-form');
-const addCardPopup = document.querySelector('#add-card-popup');
-const cardAddButton = document.querySelector('.profile__add-button');
-const profileName = document.querySelector('.profile__name');
-const profileActivity = document.querySelector('.profile__activity');
-const editName = document.querySelector('#edit-name');
-const editActivity = document.querySelector('#edit-activity');
+  const addCardPopup = document.querySelector('#add-card-popup');
+  const cardAddButton = document.querySelector('.profile__add-button');
+  const profileName = document.querySelector('.profile__name');
+  const profileActivity = document.querySelector('.profile__activity');
+  const editName = document.querySelector('#edit-name');
+  const editActivity = document.querySelector('#edit-activity');
 const addCardForm = document.querySelector('#add-card-form');
-const photoContent = document.querySelector('.photo-content__cards');
-const cardName = document.querySelector('#card-name');
-const cardLink = document.querySelector('#card-link');
-const popups = document.querySelectorAll('.popup');
-const avatarEditButton = document.querySelector('.profile__avatar-edit-button');
-const avatarEditPopup = document.querySelector('#avatar-edit-popup');
+  const photoContent = document.querySelector('.photo-content__cards');
+  const cardName = document.querySelector('#card-name');
+  const cardLink = document.querySelector('#card-link');
+  const popups = document.querySelectorAll('.popup');
+  const avatarEditButton = document.querySelector('.profile__avatar-edit-button');
+  const avatarEditPopup = document.querySelector('#avatar-edit-popup');
 const avatarEditForm = document.querySelector('#avatar-edit-form');
-const avatarLink = document.querySelector('#avatar-link');
-const avatar = document.querySelector('.profile__avatar');
+  const avatarLink = document.querySelector('#avatar-link');
+  const avatar = document.querySelector('.profile__avatar');
 
 export let userId;
+
+// API
+const api = new Api(configApi);
+
+// user info
+const userInfo = new UserInfo(userSelectors);
+
 
 // открытие окна редактирования профиля
 profileEditButton.addEventListener('click', function() {
@@ -133,20 +150,62 @@ addCardForm.addEventListener('submit', function(event) {
 
 
 // Валидация
-enableValidation(configValidate);
+const profileEditFormValidator = new FormValidator(configValidate, profileEditForm);
+const addCardFormValidator = new FormValidator(configValidate, addCardForm);
+const avatarEditFormValidator = new FormValidator(configValidate, avatarEditForm)
+
+profileEditFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
+avatarEditFormValidator.enableValidation();
+
+//
+const cardsList = new Section({
+  renderer: (item) => {
+    console.log(item);
+    const card = createCard(item);
+    const cardElement = card.generate();
+    cardsList.addItem(cardElement);
+    }
+  },
+  '.photo-content__cards'
+);
+
+const createCard = (cardData) => {
+  const card = new Card(cardData, configCard, userId,
+    {
+      handleDeleteBtnClick: (cardElement, cardID) => {
+        api.deleteCard(cardID)
+          .then(() => {
+            cardElement.remove();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      },
+      handleImageClick: () => {
+
+      },
+      handleUnlike: () => {
+
+      },
+      handleLike: () => {
+
+      }
+    }
+  );
+  return card;
+}
+
 
 // Загрузка информации о пользователе и карточек с сервера
-Promise.all([getUserData(), getCards()])
+Promise.all([api.getUserData(), api.getCards()])
   .then(([userData, cards]) => {
-    console.log(userData);
-    console.log(cards);
     userId = userData._id;
-    profileName.textContent = userData.name;
-    profileActivity.textContent = userData.about;
-    avatar.src = userData.avatar;
-    cards.forEach (function(card) {
-      photoContent.append(addCard(card));
-    });
+    userInfo.setUserInfo(userData);
+    cardsList.renderItems(cards);
+    // cards.forEach (function(card) {
+    //   photoContent.append(addCard(card));
+    // });
   })
   .catch(err => console.log(err))
 
